@@ -3,7 +3,6 @@ package no.hvl.dat110.messages;
 import no.hvl.dat110.common.TODO;
 
 public class PublishMsg extends Message {
-    private String user;
     private String topic;
     private String message;
     // message sent from client to create publish a message on a topic
@@ -15,14 +14,7 @@ public class PublishMsg extends Message {
 
     }
 
-    @Override
-    public String getUser() {
-        return user;
-    }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
 
     public String getTopic() {
         return topic;
@@ -39,7 +31,7 @@ public class PublishMsg extends Message {
     @Override
     public String toString() {
         return "PublishMsg{" +
-                "user='" + user + '\'' +
+                "user='" + this.getUser() + '\'' +
                 ", topic='" + topic + '\'' +
                 ", message='" + message + '\'' +
                 '}';

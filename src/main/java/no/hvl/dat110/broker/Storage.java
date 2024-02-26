@@ -54,7 +54,8 @@ public class Storage {
     public void addClientSession(String user, Connection connection) {
 
         // See ClientSession class
-        clients.put(user, new ClientSession(user, connection));
+        ClientSession session =  new ClientSession(user, connection);
+        clients.put(user,session);
 
 
     }
@@ -62,7 +63,9 @@ public class Storage {
     public void removeClientSession(String user) {
 
         // and remove client session for user from the storage
-        clients.remove(user);
+        ClientSession session = clients.remove(user);
+
+        session.disconnect();
 
     }
 

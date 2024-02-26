@@ -3,7 +3,6 @@ package no.hvl.dat110.messages;
 public class UnsubscribeMsg extends Message {
 
     // message sent from client to unsubscribe on a topic
-    private String user;
     private String topic;
 
     public UnsubscribeMsg(String user, String topic) {
@@ -11,14 +10,7 @@ public class UnsubscribeMsg extends Message {
         this.topic = topic;
     }
 
-    @Override
-    public String getUser() {
-        return user;
-    }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
 
     public String getTopic() {
         return topic;
@@ -31,7 +23,7 @@ public class UnsubscribeMsg extends Message {
     @Override
     public String toString() {
         return "UnsubscribeMsg{" +
-                "user='" + user + '\'' +
+                "user='" + this.getUser() + '\'' +
                 ", topic='" + topic + '\'' +
                 '}';
     }

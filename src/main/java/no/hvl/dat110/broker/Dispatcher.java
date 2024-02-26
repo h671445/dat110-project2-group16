@@ -151,22 +151,10 @@ public class Dispatcher extends Stopable {
         // TODO: publish the message to clients subscribed to the topic
         // topic and message is contained in the subscribe message
         // messages must be sent using the corresponding client session objects
-        String user = msg.getUser();
-        String topic = msg.getTopic();
+       Set<String> users = storage.getSubscribers(msg.getTopic());
 
-        Set<String> subs = storage.getSubscribers(topic);
-        if(subs == null || subs.isEmpty()){
-            Logger.log("no subscribers for topic");
-            return;
-        }
-        subs.stream().forEach((sub) -> {
-            ClientSession session = storage.getSession(sub);
-            if(session != null){
-                session.send(msg);
-                Logger.log("Message sent to + " + sub + " on topic" + topic);
-            }else{
-                Logger.log("Failed to get session from " + sub);
-            }
-        });
+       for(String user : users){
+           storage.getSession(user).send(msg);
+       }
     }
 }

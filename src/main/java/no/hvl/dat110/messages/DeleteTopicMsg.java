@@ -1,7 +1,6 @@
 package no.hvl.dat110.messages;
 
 public class DeleteTopicMsg extends Message {
-    private String user;
     private String topic;
 	// message sent from client to create topic on the broker
 
@@ -14,23 +13,17 @@ public class DeleteTopicMsg extends Message {
         return topic;
     }
 
-    @Override
-    public String getUser() {
-        return user;
-    }
+
 
     public void setTopic(String topic) {
         this.topic = topic;
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
 
     @Override
     public String toString() {
         return "DeleteTopicMsg{" +
-                "user='" + user + '\'' +
+                "user='" + this.getUser() + '\'' +
                 ", topic='" + topic + '\'' +
                 '}';
     }

@@ -1,7 +1,6 @@
 package no.hvl.dat110.messages;
 
 public class SubscribeMsg extends Message {
-    private String user;
     private String topic;
     // message sent from client to subscribe on a topic
 
@@ -11,18 +10,11 @@ public class SubscribeMsg extends Message {
 
     }
 
-    @Override
-    public String getUser() {
-        return user;
-    }
 
     public String getTopic() {
         return topic;
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
 
     public void setTopic(String topic) {
         this.topic = topic;
@@ -31,7 +23,7 @@ public class SubscribeMsg extends Message {
     @Override
     public String toString() {
         return "SubscribeMsg{" +
-                "user='" + user + '\'' +
+                "user='" + this.getUser() + '\'' +
                 ", topic='" + topic + '\'' +
                 '}';
     }
